@@ -28,7 +28,10 @@ export const ShareButton = ({ social, icon, quote }) => {
   };
 
   return (
-    <button onClick={handleShareButtonClick} className="btns-social">
+    <button
+      onClick={handleShareButtonClick}
+      className={`btns-social ${social}`}
+    >
       {icon}
     </button>
   );
