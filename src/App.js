@@ -1,27 +1,36 @@
-import './App.css';
-import React, {useState} from 'react';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import {
+  FaSquareTwitter,
+  FaSquareReddit,
+  FaSquareWhatsapp,
+} from "react-icons/fa6";
+
+import { ShareButton } from "./componsents";
 
 const App = () => {
   const url = "https://api.quotable.io/random";
-  let quoteData = {
-    content: "Let time be your only competitor.",
-    author: "Ahmed Saber"
-  }
-  const [quote, setQuote] = useState(quoteData)
+  const [quote, setQuote] = useState("");
+
+  useEffect(() => {
+    generateQuote();
+  }, []);
 
   const generateQuote = () => {
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setQuote(data)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setQuote(data);
       });
-  }
+  };
 
   const copy = () => {
-    navigator.clipboard.writeText(quote.author + " once said: " + quote.content)
-    alert('copied')
-  }
+    navigator.clipboard.writeText(
+      quote.author + " once said: " + quote.content
+    );
+    alert("copied");
+  };
 
   return (
     <>
@@ -29,14 +38,38 @@ const App = () => {
       <div className="container">
         <p>{quote.content}</p>
         <span>{quote.author}</span>
-        <div className="btns">
-          <button onClick={copy} className="btn">Copy</button>
-          <button onClick={generateQuote}>Generate Another Quote</button>
+        <div className="container-btns">
+          <div className="container-btns-socials">
+            <ShareButton
+              social="twitter"
+              icon={<FaSquareTwitter size={30} />}
+              quote={quote.author + " once said: " + quote.content}
+            />
+
+            <ShareButton
+              social="whatsapp"
+              icon={<FaSquareWhatsapp size={30} />}
+              quote={quote.author + " once said: " + quote.content}
+            />
+
+            <ShareButton
+              social="reddit"
+              icon={<FaSquareReddit size={30} />}
+              quote={quote.author + " once said: " + quote.content}
+            />
+          </div>
+          <div className="btns">
+            <button onClick={copy} className="btn">
+              Copy
+            </button>
+            <button onClick={generateQuote} className="btn">
+              Generate Another Quote
+            </button>
+          </div>
         </div>
       </div>
     </>
-  )
-}
-
+  );
+};
 
 export default App;
