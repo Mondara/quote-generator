@@ -71,12 +71,16 @@ const App = () => {
 
       <div class="attribution">
         Challenge by
-        <a href="https://intern2grow.onrender.com/" target="_blank">
+        <a
+          href="https://intern2grow.onrender.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
           {" "}
           Intern2Grow
         </a>
         . Coded by{" "}
-        <a href="https://github.com/Mondara" target="_blank">
+        <a href="https://github.com/Mondara" target="_blank" rel="noreferrer">
           Mondara
         </a>
         .

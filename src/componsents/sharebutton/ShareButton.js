@@ -1,10 +1,5 @@
 import React from "react";
 import { shareTwitter, shareWhatsapp, shareReddit } from "../../utils";
-import {
-  FaSquareTwitter,
-  FaSquareReddit,
-  FaSquareWhatsapp,
-} from "react-icons/fa6";
 
 export const ShareButton = ({ social, icon, quote }) => {
   const handleShareButtonClick = () => {
